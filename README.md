@@ -7,7 +7,8 @@
 All other files are code files, to be run in the order of the filenames (0 to 4)
 
 ## Dependencies
-To reproduce these analyses please install the following R packages:
+To reproduce these analyses the following R packages/versions are needed:
+- R version 4.2.2 (2022-10-31)
 - maps_3.4.1
 - performance_0.10.2
 - mgcv_1.8-41
