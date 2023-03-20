@@ -1,0 +1,23 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+turbidity ~ s(latitude, longitude, bs = "sos", k = -1, m = 1) + 
+    te(gl_area, bs = "ts", k = 5)
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  3.78322    0.09004   42.02   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                         edf Ref.df     F p-value    
+s(latitude,longitude) 17.938     49 3.642  <2e-16 ***
+te(gl_area)            1.196      4 9.450  <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.523   
+  Scale est. = 1.5664    n = 332

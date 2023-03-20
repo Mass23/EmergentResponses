@@ -1,0 +1,23 @@
+
+Family: gaussian 
+Link function: identity 
+
+Formula:
+CUE ~ s(latitude, longitude, bs = "sos", k = -1, m = 1) + te(chla, 
+    bs = "ts", k = 5)
+
+Parametric coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.90675    0.02721  -70.08   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Approximate significance of smooth terms:
+                         edf Ref.df     F  p-value    
+s(latitude,longitude) 26.382     49 3.290  < 2e-16 ***
+te(chla)               1.144      4 5.649 8.47e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+R-sq.(adj) =  0.446   
+  Scale est. = 0.18064   n = 264
