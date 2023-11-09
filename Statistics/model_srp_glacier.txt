@@ -10,14 +10,14 @@ Parametric coefficients:
             Estimate Std. Error t value Pr(>|t|)    
 (Intercept)  1.14538    0.04678   24.48   <2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Approximate significance of smooth terms:
                          edf Ref.df     F p-value    
 s(latitude,longitude) 39.759     49 9.261  <2e-16 ***
 te(gl_area)            0.762      4 0.719  0.0402 *  
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 R-sq.(adj) =  0.706   
   Scale est. = 0.46684   n = 301

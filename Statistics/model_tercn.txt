@@ -7,15 +7,15 @@ TER_cn ~ s(latitude, longitude, bs = "sos", k = -1, m = 1)
 
 Parametric coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) 4.850993   0.008199   591.7   <2e-16 ***
+(Intercept) 4.844133   0.004401    1101   <2e-16 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Approximate significance of smooth terms:
                         edf Ref.df     F  p-value    
-s(latitude,longitude) 6.034     49 0.384 0.000941 ***
+s(latitude,longitude) 8.891     49 0.726 9.94e-06 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-R-sq.(adj) =  0.0869   
-  Scale est. = 0.014545  n = 264
+R-sq.(adj) =   0.13   
+  Scale est. = 0.0046777  n = 261

@@ -49,11 +49,15 @@ test_bf(denominator = mod_chla_turb1$gam, mod_chla_turb2$gam, mod_chla_turb3$gam
                       mod_chla_turb6$gam, mod_chla_turb7$gam, mod_chla_turb8$gam, mod_chla_turb9$gam, mod_chla_turb10$gam, 
                       mod_chla_turb11$gam, mod_chla_turb12$gam, mod_chla_turb13$gam, mod_chla_turb14$gam, mod_chla_turb15$gam)
 # Best model compared to null is 7 (BF = 1.32e+07)
-capture.output(summary(mod_chla_turb7$gam), file = "Statisticsmodel_chlorophyll.txt")
+capture.output(summary(mod_chla_turb7$gam), file = "Statistics/model_chlorophyll.txt")
 
 ################################################################
 ########### Plotting
 ################################################################
+colours = c('#52B7E0', '#61BC6A', '#1C9C31', '#E09882', '#E0422E',
+            '#FFC689', '#E88B33', '#B287C4', '#9237B0', '#DECC45')
+expeditions = c('Caucasus Mountains', 'Chilean Andes', 'Ecuadorian Andes', 'European Alps', 'Himalayas',
+                'Pamir & Tien Shan', 'Rwenzori Mountains', 'Scandinavian Mountains', 'Southern Alps', 'Southwest Greenland')
 
 # Panel A, Turbidity
 chla_turb_preds = expand_grid(sample=nomis_data$Sample, turbidity=seq(-3.5, 7.1, 0.5))
@@ -67,7 +71,7 @@ chla_turb_preds$pred = preds$fit
 chla_turb_preds$se = preds$se.fit
 chla_turb_preds = chla_turb_preds %>% group_by(turbidity) %>% summarise(pred = mean(pred), se = mean(se))
 p1 = ggplot() +
-  geom_point(data=nomis_data, aes(x=turbidity,y=chla, colour=`Mountain range`), alpha=0.2, size=2.5) +
+  geom_point(data=nomis_data, aes(x=turbidity,y=chla, colour=factor(`Mountain range`, levels=rev(expeditions))), alpha=0.2, size=2.5) +
   labs(colour = "Mountain range") +
   geom_ribbon(data=chla_turb_preds, aes(x=turbidity, ymin=pred-se, ymax=pred+se), colour='lightgrey', alpha=.1) +
   geom_line(data=chla_turb_preds, aes(x=turbidity,y=pred), size=1.5, colour='black') +
@@ -75,8 +79,7 @@ p1 = ggplot() +
   geom_line(data=chla_turb_preds, aes(x=turbidity,y=pred-se), size=1, colour='dimgrey', linetype='dashed') +
   scale_y_continuous(name = bquote(""*Chlorophyll-italic(a)~(ln~mu*g~g^-1~DM)*"")) +
   scale_x_continuous(name = bquote(""*Turbidity~(ln~ NTU)*"")) +
-  scale_colour_brewer(palette = "Set1") + scale_colour_brewer(palette = "Paired")+
-  theme_bw() + theme(legend.position = 'none')
+  scale_colour_manual(values = colours) + theme_bw() + theme(legend.position = 'none')
 
 # Panel C, DIN
 chla_din_preds = expand_grid(sample=nomis_data$Sample, DIN=seq(2, 7, 0.1))
@@ -90,7 +93,7 @@ chla_din_preds$pred = preds$fit
 chla_din_preds$se = preds$se.fit
 chla_din_preds = chla_din_preds %>% group_by(DIN) %>% summarise(pred = mean(pred), se = mean(se))
 p2 = ggplot() +
-  geom_point(data=nomis_data, aes(x=DIN,y=chla, colour=`Mountain range`), alpha=0.2, size=2.5) +
+  geom_point(data=nomis_data, aes(x=DIN,y=chla, colour=factor(`Mountain range`, levels=rev(expeditions))), alpha=0.2, size=2.5) +
   labs(colour = "Mountain range") +
   geom_ribbon(data=chla_din_preds, aes(x=DIN, ymin=pred-se, ymax=pred+se), colour='lightgrey', alpha=.1) +
   geom_line(data=chla_din_preds, aes(x=DIN,y=pred), size=1.5, colour='black') +
@@ -98,9 +101,8 @@ p2 = ggplot() +
   geom_line(data=chla_din_preds, aes(x=DIN,y=pred-se), size=1, colour='dimgrey', linetype='dashed') +
   scale_y_continuous(name = '') +
   scale_x_continuous(name = bquote(""*Dissolved~inorg.~nitrogen~(ln~ N~l^-1)*"")) +
-  scale_colour_brewer(palette = "Set1") + scale_colour_brewer(palette = "Paired") +
-  theme_bw() + theme(legend.position = 'none')
-p = ggarrange(p1, p2, ncol = 2, nrow = 1, labels = c('a', 'b'))
-ggsave(p, filename = 'Plots/Fig2_chla_turb_water_temp.pdf', width=6, height = 3)
+  scale_colour_manual(values = colours) + theme_bw() + theme(legend.position = 'none')
+
+ggsave(p1, filename = 'Plots/Fig3_chla_turb.pdf', width=4, height = 4)
 
 

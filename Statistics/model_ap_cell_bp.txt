@@ -3,21 +3,21 @@ Family: gaussian
 Link function: identity 
 
 Formula:
-CUE ~ s(latitude, longitude, bs = "sos", k = -1, m = 1) + te(chla, 
+BP ~ s(latitude, longitude, bs = "sos", k = -1, m = 1) + s(AP_cell, 
     bs = "ts", k = 5)
 
 Parametric coefficients:
             Estimate Std. Error t value Pr(>|t|)    
-(Intercept) -1.87740    0.02903  -64.68   <2e-16 ***
+(Intercept)  2.97425    0.09188   32.37   <2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Approximate significance of smooth terms:
-                         edf Ref.df     F p-value    
-s(latitude,longitude) 19.665     49 1.855  <2e-16 ***
-te(chla)               1.161      4 6.540  <2e-16 ***
+                            edf Ref.df     F p-value    
+s(latitude,longitude) 9.057e+00     49 1.325  <2e-16 ***
+s(AP_cell)            1.151e-07      4 0.000   0.972    
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-R-sq.(adj) =  0.378   
-  Scale est. = 0.16671   n = 261
+R-sq.(adj) =  0.322   
+  Scale est. = 1.1649    n = 138
